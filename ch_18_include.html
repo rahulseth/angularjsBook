@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 18 AngularJS Include </h1>
+
+<ul> 
+  <li>With AngularJS, you can include HTML from an external file by using ng-include directive.</li>
+</ul>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<div ng-include src="'mytable.html'">
+	</div>
+</div>
+
+<script>
+var app = angular.module("myApp", []);
+app.controller("myCtrl", function($scope, $http) {
+  $http.get("custom.php").then(function (response) {
+     $scope.skills = response.data.records;
+  });
+});
+</script>
+</body>

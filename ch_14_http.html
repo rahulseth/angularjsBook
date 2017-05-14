@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 14 AngularJS AJAX - $http </h1>
+
+<ul> 
+  <li> $http is an AngularJS service for reading data from remote servers..</li>
+  <li> There are several shortcut methods of http service like .delete(), .get(), .head(), .jsonp(), .patch(), .post(), .put()
+</ul>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+{{myWelcome}}
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $http({
+    method : "GET",
+    url : "welcome.html"
+  }).then(function mySucces(response) {
+      $scope.myWelcome = response.data;
+    }, function myError(response) {
+      $scope.myWelcome = response.statusText;
+  });
+});
+</script>

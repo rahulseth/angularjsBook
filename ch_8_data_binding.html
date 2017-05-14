@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 8 Data Binding </h1>
+<ul>
+  <li> Data binding in AngularJS is synchronization between model & view. </li>
+  
+  <br><li> <b> Two way data binding </b><br>
+   when data in model changes, view reflect the change, & when data in view change, model also update as well.
+   This happen automatically & immediately which make sure model & view updated at all time.</li>
+  <br><br>
+  <li><b> One way data binding </b><br>
+   Model value automatically assigned to HTML element specified through data binding. But HTML element can't 
+   change the value of Model.</li>    
+   
+</ul>
+<div ng-app="myApp" ng-controller="myCtrl">
+    One way data binding : <input ng-model="skill">
+	<br>Two way data binding: <input ng-model="name"> {{name}}
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "Rahul Seth";
+	$scope.skill = "AngularJS";
+});
+</script>

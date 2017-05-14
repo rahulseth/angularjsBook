@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+<body>
+<h1> Chapter 4 Expression </h1>
+<div ng-app="" ng-init="mycol='red'">
+  
+  <p>My first expression: {{ 5 + 5 }}</p>
+  <p>Expression written as <span ng-bind = '5 + 5'/> </p>
+  <input style="background-color:{{mycol}}" type="text" ng-model="mycol" value={{mycol}}/>
+  
+</div>
+
+</body>
+</html>

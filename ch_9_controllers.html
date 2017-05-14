@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 9 AngularJS Controllers </h1>
+<ul>
+  <li> Controller in AngularJS control the data of AngularJS application</li>
+  <li> Controller are regular javascript object </li>
+  <li>The ng-controller directive defines the application controller. </li>
+   
+</ul>
+<div ng-app="myApp" ng-controller="myCtrl">
+	<br>Controler <input ng-model="name"> {{name}}
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "Rahul Seth";
+});
+</script>

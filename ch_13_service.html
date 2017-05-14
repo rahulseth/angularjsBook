@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 13 AngularJS Service </h1>
+
+<ul> 
+  <li> Services are javascript functions and are responsible to do a specific tasks only.</li>
+  <li><b>By using services we can organize & share our code across our app</b></li>
+  <li> AngularJS provides many inbuilt services for example - $https:, $route, $window, $location etc. </li>
+  <li> The $location service has methods which return information about the location of the current web page </li>
+  <li> The $http service makes a request to the server, and lets your application handle the response.</li>
+  <li> The $timeout service is AngularJS' version of the window.setTimeout function. </li>
+  <li> The $interval service is AngularJS' version of the window.setInterval function. </li>
+  <li> We can create service in two ways:
+    <ul> 
+      <li> Service : - Using service method, we define a service and then assign method to it. We've also 
+	       injected an already available service to it.
+	  <li> Factory : - Using factory method, we first define a factory and then assign method to it.
+	</ul>
+  </li>
+</ul>
+<div ng-app="mainApp" ng-controller="myCtrl">
+<input ng-model='number'>
+<button ng-click = "square()">X<sup>2</sup></button>
+<p>Result: {{result}}</p>
+</div>
+<script>
+var myapp = angular.module("mainApp", []);
+myapp.factory('MathService', function() {
+   var factory = {}; 
+   factory.multiply = function(a, b) {
+      return a * b
+   }
+   return factory;
+}); 
+
+myapp.service('CalcService', function(MathService){
+   this.square = function(a) {
+      return MathService.multiply(a,a);
+   }
+});
+
+myapp.controller('myCtrl', function($scope, CalcService) {
+	$scope.number = 10;
+	//$scope.result = MathService.multiply($scope.number, );
+	$scope.square = function() {
+    $scope.result = CalcService.square($scope.number);
+  }
+});
+</script>

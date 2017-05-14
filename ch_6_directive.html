@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 6 Directive </h1>
+<ul>
+  <li> AngularJS extend the HTML element with new attribute called directive </li>
+  <li> AngularJS has built-in directive, but we can create your own directives </li>
+  <li> Directive just offer functionality in our application </li>
+  <li> List of directive: - ng-app, ng-init, ng-conroller </li>
+</ul>
+<div ng-app="myApp" ng-controller="myCtrl">
+  <p>First-Name & Last-Name : {{ firstName + " " + lastName }}</p>
+</div>
+
+<script src="module/myApp.js"></script>
+<script src="controller/myCtrl.js"></script>
+</body>
+</html>

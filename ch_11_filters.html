@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<script src="js/angular.js"></script>
+
+<body>
+<h1> Chapter 11 AngularJS Filter </h1>
+Filters can be added in AngularJS to format data.
+<ul> AngularJS provides filters to transform data:
+  <li> <b>currency</b> Format a number to a currency format. </li>
+  <li> <b>date</b> Format a date to specified string. </li>
+  <li> <b>filter</b> Format a number to a currency format. </li>
+  <li> <b>orderBY</b> Format a number to a currency format. </li>
+  <li> <b>uppercase</b> Format a string to uppercase. </li>
+  <li> <b>lowercase</b> Format a string to lowercase. </li>
+  <li> <b>limitTo</b> Limit array/string to specified number of element/characters. </li>
+  <li> <b>json</b> Format a object to a json string. </li>
+</ul>
+
+Filters can be added to expressions by using the pipe character |, followed by a filter.
+
+<div ng-app="myApp" ng-controller="myCtrl">
+	<br>currency {{ price | currency }}
+	<br>date {{ today | date }}
+	<br>upercase {{ name | uppercase }}
+	<br>lowercase {{ name | lowercase }}
+	<br>json <pre> {{skills | json : 2}}</pre>
+
+	<br><span> LimitTO, OrderBy & Filter example: -
+	<p>Type Skill <input type="text" ng-model="spec_skill">
+	<br>No. of Skills <input type="number" min="0" max="9"step="1" ng-model="numLimit"></P>
+	<table border="1" width="100%">
+	<tr>
+		<th>Skills</th>
+		<th>Experience</th>
+	</tr>
+	<tr ng-repeat="x in skills | orderBy:'-experience' | filter:{skill: spec_skill} | limitTo:numLimit">
+		<td>{{x.skill}}</td>
+		<td>{{x.experience}}</td>
+	</tr>
+</table>
+	
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.name = "Rahul Seth";
+	$scope.price = 50;
+	$scope.today = "2016-01-05T09:05:05.035Z";
+	$scope.numLimit = 9;
+	$scope.skills = [
+	  {skill:'Drupal', experience:'6'},
+	  {skill:'Wordpress', experience:'3'},
+	  {skill:'AngularJS', experience:'1'},
+	  {skill:'HTML5', experience:'4'},
+	  {skill:'CSS3', experience:'3'},
+	  {skill:'Javascript', experience:'3'},
+	  {skill:'Jquery', experience:'4'},
+	  {skill:'Mysql', experience:'6'},
+	  {skill:'Php', experience:'6'},
+	];
+});
+</script>
